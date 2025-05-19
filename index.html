@@ -1,0 +1,119 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real-Time Chat App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+    }
+    #chat-container {
+      background: white;
+      width: 100%;
+      max-width: 600px;
+      height: 80vh;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #messages {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ddd;
+    }
+    #messages p {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 75%;
+      background: #e2e8f0;
+      word-wrap: break-word;
+    }
+    #form {
+      display: flex;
+      padding: 15px;
+      background: #f9fafb;
+    }
+    #input {
+      flex-grow: 1;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    #input:focus {
+      border-color: #3182ce;
+    }
+    #sendButton {
+      background: #3182ce;
+      border: none;
+      color: white;
+      padding: 0 20px;
+      margin-left: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    #sendButton:hover {
+      background: #2c5282;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container">
+    <div id="messages"></div>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" placeholder="Type your message..." />
+      <button id="sendButton" type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    // Add message to the messages div
+    function addMessage(message) {
+      const p = document.createElement('p');
+      p.textContent = message;
+      messages.appendChild(p);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // Listen for form submit to send message
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (input.value.trim() === '') return;
+      socket.emit('chat message', input.value.trim());
+      input.value = '';
+      input.focus();
+    });
+
+    // Listen for chat messages from server
+    socket.on('chat message', (msg) => {
+      addMessage(msg);
+    });
+  </script>
+</body>
+</html>
+
