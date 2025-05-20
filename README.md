@@ -14,7 +14,6 @@
 
 # CHAT-APPLICATION
 
-
 ### **Understanding the Mechanism of a Real-Time Chat Application**
 
 The real-time chat application you're working with is built using a combination of **HTML**, **CSS**, **JavaScript**, **Node.js**, **Express**, and **Socket.IO**. The goal of the application is to allow multiple users to send and receive messages instantly, without refreshing the page. This is accomplished using a WebSocket-based communication model.
@@ -54,6 +53,9 @@ The application also tracks when users connect or disconnect from the server. Ev
 #### **Summary**
 
 To summarize, this chat application demonstrates a simple yet powerful real-time communication model. The client handles the user interface and captures input, the server relays messages between clients, and WebSockets ensure instant, bidirectional communication. No page reloads, no delays — just seamless interaction. This mechanism is scalable and forms the foundation for more complex chat systems used in social platforms, gaming, and collaborative tools.
+
+---
+
 
 # CHAT APPLICATION OUTPUT :
 
