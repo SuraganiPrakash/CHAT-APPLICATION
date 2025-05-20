@@ -76,8 +76,12 @@ Responsive Layout: A web design approach that allows the page to adapt to variou
 
 Dynamic Content Loading: Refers to the ability to load and update content without a full page refresh, providing a seamless experience.
 
+https://github.com/SuraganiPrakash/CHAT-APPLICATION/issues/1
+
 Error Handling: A programming practice that helps manage unexpected user input or issues like network failures. It improves the reliability and usability of the application.
 
 User Interface (UI): The visual part of the app that users interact with. In this case, the search bar and weather display area form the core UI components.
 
 By combining these technologies and features, you can build an interactive and user-friendly weather application that fetches and displays real-time data efficiently across all devices.
+
+https://github.com/SuraganiPrakash/CHAT-APPLICATION/issues/1
